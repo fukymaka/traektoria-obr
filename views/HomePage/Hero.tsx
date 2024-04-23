@@ -14,19 +14,18 @@ export default function Hero() {
   return (
     <HeroWrapper>
       <Contents>
-        <CustomOverTitle>the coolest, saas product you have ever seen</CustomOverTitle>
-        <Heading>Make your life easier with our SaaS</Heading>
+        <CustomOverTitle>Инновационные продукты</CustomOverTitle>
+        <Heading>Современные IT решения для образования</Heading>
         <Description>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis, tempora qui. Explicabo voluptate iure ipsum molestias
-          repudiandae perspiciatis nostrum praesentium, unde pariatur tempora magni rem. Necessitatibus facilis obcaecati ratione.
+          В современном мире информационные технологии играют ключевую роль в образовании. Мы предлагаем инновационные IT решения, которые помогут сделать процесс обучения более эффективным и увлекательным. Наши продукты разработаны с учетом потребностей образовательных учреждений и позволяют автоматизировать рутинные задачи, улучшить коммуникацию между участниками образовательного процесса и обеспечить безопасность данных.
         </Description>
         <CustomButtonGroup>
           <Button onClick={() => setIsModalOpened(true)}>
-            Subscribe to the newsletter <span>&rarr;</span>
+            Узнать больше о наших решениях <span>&rarr;</span>
           </Button>
           <NextLink href="#whitepaper" passHref>
             <Button transparent>
-              Features <span>&rarr;</span>
+              Ознакомиться с продуктами <span>&rarr;</span>
             </Button>
           </NextLink>
         </CustomButtonGroup>

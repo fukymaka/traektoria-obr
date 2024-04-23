@@ -26,34 +26,30 @@ export default function Homepage({ posts }: InferGetStaticPropsType<typeof getSt
       <HomepageWrapper>
         <WhiteBackgroundContainer>
           <Hero />
-          <Partners />
-          <BasicSection imageUrl="/demo-illustration-1.svg" title="Lorem ipsum dolor sit amet consectetur." overTitle="sit amet gogo">
+          {/* <Partners /> */}
+          <BasicSection imageUrl="/demo-illustration-1.svg" title="Траектория образования" overTitle="О компании">
             <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas, quidem error incidunt a doloremque voluptatem porro inventore
-              voluptate quo deleniti animi laboriosam.{' '}
-              <Link href="/help-center">Possimus ullam velit rem itaque consectetur, in distinctio?</Link> Lorem ipsum, dolor sit amet
-              consectetur adipisicing elit. Soluta repellendus quia quos obcaecati nihil. Laudantium non accusantium, voluptate eum nesciunt
-              at suscipit quis est soluta?
+            ООО «Траектория образования» - развивающаяся компания, выполняющая работы в области разработки программного обеспечения, систем учёта и тестирования, а также оказании услуг по независимому консалтингу ИТ.{' '}
+              
             </p>
           </BasicSection>
-          <BasicSection imageUrl="/demo-illustration-2.svg" title="Lorem ipsum dolor sit." overTitle="lorem ipsum" reversed>
-            <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas, quidem error incidunt a doloremque voluptatem porro inventore{' '}
-              <strong>voluptate quo deleniti animi laboriosam</strong>. Possimus ullam velit rem itaque consectetur, in distinctio?
-            </p>
+          <BasicSection imageUrl="/demo-illustration-2.svg" title="Основные виды оказываемых услуг:" overTitle="Услуги" reversed>
             <ul>
-              <li>Professional point 1</li>
-              <li>Professional remark 2</li>
-              <li>Professional feature 3</li>
+              <li>Разработка компьютерного программного обеспечения</li>
+              <li>Деятельность консультативная и работы в области компьютерных технологий</li>
+              <li>Деятельность, связанная с использованием вычислительной техники и информационных технологий</li>
+              <li>Деятельность по созданию и использованию баз данных и информационных ресурсов</li>
+              <li>Научные исследования и разработки в области естественных и технических наук прочие</li>
+              <li>Деятельность по предоставлению прочих вспомогательных услуг для бизнеса, не включенная в другие группировки</li>
             </ul>
           </BasicSection>
         </WhiteBackgroundContainer>
         <DarkerBackgroundContainer>
           <Cta />
           <FeaturesGallery />
-          <Features />
+          {/* <Features /> */}
           <Testimonials />
-          <ScrollableBlogPosts posts={posts} />
+          {/* <ScrollableBlogPosts posts={posts} /> */}
         </DarkerBackgroundContainer>
       </HomepageWrapper>
     </>
