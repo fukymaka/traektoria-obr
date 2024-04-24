@@ -27,16 +27,16 @@ export default function NewsletterModal({ onClose }: NewsletterModalProps) {
   function onSubmit(event: React.FormEvent<HTMLFormElement>, enrollNewsletter: (props: DefaultFormFields) => void) {
     event.preventDefault();
     console.log({ email });
-    // if (email) {
-    //   enrollNewsletter({ EMAIL: email });
-    // }
+    if (email) {
+      enrollNewsletter({ EMAIL: email });
+    }
   }
 
   return (
     <MailchimpSubscribe
       url={EnvVars.MAILCHIMP_SUBSCRIBE_URL}
       render={({ subscribe, status, message }) => {
-        // const hasSignedUp = status === 'success';
+        const hasSignedUp = status === 'success';
         return (
           <Overlay>
             <Container>
@@ -44,6 +44,9 @@ export default function NewsletterModal({ onClose }: NewsletterModalProps) {
                 <CloseIconContainer>
                   <CloseIcon onClick={onClose} />
                 </CloseIconContainer>
+                {hasSignedUp && <MailSentState />}
+                {!hasSignedUp && (
+                  <>
                 <Title>Оставьте ваши контактные данные, и мы обязательно с вами свяжемся</Title>
                     <Col>
                       <CustomInput
@@ -83,6 +86,9 @@ export default function NewsletterModal({ onClose }: NewsletterModalProps) {
                         Отправить заявку
                       </CustomButton>
                     </Row>
+                    {message && <ErrorMessage dangerouslySetInnerHTML={{ __html: message as string }} />}
+                  </>
+                )}
                     
               </Card>
             </Container>

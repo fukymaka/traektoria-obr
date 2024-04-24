@@ -25,7 +25,7 @@ export default function FormSection() {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ subject: 'Email from contact form', ...payload }),
+        body: JSON.stringify({ subject: 'Сообщение от', ...payload }),
       });
 
       if (res.status !== 204) {
@@ -54,25 +54,25 @@ export default function FormSection() {
         <InputGroup>
           <InputStack>
             {errors.name && <ErrorMessage>Name is required</ErrorMessage>}
-            <Input placeholder="Your Name" id="name" disabled={isDisabled} {...register('name', { required: true })} />
+            <Input placeholder="Ваше имя" id="name" disabled={isDisabled} {...register('name', { required: true })} />
           </InputStack>
           <InputStack>
             {errors.email && <ErrorMessage>Email is required</ErrorMessage>}
-            <Input placeholder="Your Email" id="email" disabled={isDisabled} {...register('email', { required: true })} />
+            <Input placeholder="Ваш Email" id="email" disabled={isDisabled} {...register('email', { required: true })} />
           </InputStack>
         </InputGroup>
         <InputStack>
           {errors.description && <ErrorMessage>Description is required</ErrorMessage>}
           <Textarea
             as="textarea"
-            placeholder="Enter Your Message..."
+            placeholder="Напишите ваше сообщение..."
             id="description"
             disabled={isDisabled}
             {...register('description', { required: true })}
           />
         </InputStack>
         <Button as="button" type="submit" disabled={isSubmitDisabled}>
-          Send Message
+          Отправить
         </Button>
       </Form>
     </Wrapper>

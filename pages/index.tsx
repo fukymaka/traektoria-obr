@@ -27,6 +27,7 @@ export default function Homepage({ posts }: InferGetStaticPropsType<typeof getSt
         <WhiteBackgroundContainer>
           <Hero />
           {/* <Partners /> */}
+          <div id="company"></div>
           <BasicSection imageUrl="/demo-illustration-1.svg" title="Траектория образования" overTitle="О компании">
             <p>
             ООО «Траектория образования» - развивающаяся компания, выполняющая работы в области разработки программного обеспечения, систем учёта и тестирования, а также оказании услуг по независимому консалтингу ИТ.{' '}
@@ -50,6 +51,7 @@ export default function Homepage({ posts }: InferGetStaticPropsType<typeof getSt
         </WhiteBackgroundContainer>
         <DarkerBackgroundContainer>
           <Cta />
+          <div id="solutions"></div>
           <FeaturesGallery />
           {/* <Features /> */}
           {/* <Testimonials /> */}

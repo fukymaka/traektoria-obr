@@ -3,9 +3,12 @@ import styled from 'styled-components';
 export default function InformationSection() {
   return (
     <Wrapper>
-      <h3>Contact Info</h3>
+      <h3>Контактная информация</h3>
       <p>
-        <span>Email:</span> support@myawesomesaas.com
+        <span>Email:</span> info@traektoria-obr.ru
+      </p>
+      <p>
+        <span>Телефон:</span> +79220088008
       </p>
     </Wrapper>
   );
@@ -25,6 +28,7 @@ const Wrapper = styled.div`
     font-weight: normal;
     font-size: 1.6rem;
     color: rgba(var(--text), 0.7);
+    margin-bottom: 10px;
   }
 
   span {

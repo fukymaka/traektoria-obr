@@ -41,7 +41,7 @@ export default function MailSentState() {
           fill="#1673ff"
         />
       </svg>
-      <p>Mail successfully sent!</p>
+      <p>Запрос успешно отправлен!</p>
     </Wrapper>
   );
 }

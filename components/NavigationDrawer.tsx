@@ -33,6 +33,7 @@ function NavItemsList({ items }: NavigationDrawerProps) {
   const { close } = OriginalDrawer.useDrawer()
   const router = useRouter()
 
+  
   useEffect(() => {
     function handleRouteChangeComplete() {
       close()

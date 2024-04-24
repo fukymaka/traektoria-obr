@@ -23,7 +23,7 @@ export default function Hero() {
           <Button onClick={() => setIsModalOpened(true)}>
             Узнать больше о наших решениях <span>&rarr;</span>
           </Button>
-          <NextLink href="#whitepaper" passHref>
+          <NextLink href="#solutions" passHref>
             <Button transparent>
               Ознакомиться с продуктами <span>&rarr;</span>
             </Button>
