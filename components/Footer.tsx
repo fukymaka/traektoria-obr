@@ -11,7 +11,7 @@ type FooterItems = SingleFooterList[];
 
 const footerItems: FooterItems = [
   {
-    title: 'Company',
+    title: 'Компания',
     items: [
       { title: 'Privacy Policy', href: '/privacy-policy' },
       { title: 'Cookies Policy', href: '/cookies-policy' },
@@ -50,14 +50,15 @@ export default function Footer() {
   return (
     <FooterWrapper>
       <Container>
-        <ListContainer>
+        {/* <ListContainer>
           {footerItems.map((singleItem) => (
             <FooterList key={singleItem.title} {...singleItem} />
           ))}
-        </ListContainer>
+        </ListContainer> */}
         <BottomBar>
           <ShareBar>
-            <NextLink href="https://www.twitter.com/my-saas-startup" passHref>
+            <img src='/logo_fasie.png'></img>
+            {/* <NextLink href="https://www.twitter.com/my-saas-startup" passHref>
               <a>
                 <TwitterIcon size={50} round={true} />
               </a>
@@ -73,9 +74,9 @@ export default function Footer() {
               <a>
                 <LinkedinIcon size={50} round={true} />
               </a>
-            </NextLink>
+            </NextLink> */}
           </ShareBar>
-          <Copyright>&copy; Copyright 2021 My Saas Startup</Copyright>
+          <Copyright>ООО "Траектория Образования"<br></br>192076, г. Санкт-Петербург, ул. Прибрежная, д.1, лит. А, кв.238<br></br>ОГРН 1147847299907 ИНН 7840511846 КПП 781101001</Copyright>
         </BottomBar>
       </Container>
     </FooterWrapper>

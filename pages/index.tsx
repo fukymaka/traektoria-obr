@@ -33,7 +33,9 @@ export default function Homepage({ posts }: InferGetStaticPropsType<typeof getSt
               
             </p>
           </BasicSection>
+          <div id="services"></div>
           <BasicSection imageUrl="/demo-illustration-2.svg" title="Основные виды оказываемых услуг:" overTitle="Услуги" reversed>
+            
             <ul>
               <li>Разработка компьютерного программного обеспечения</li>
               <li>Деятельность консультативная и работы в области компьютерных технологий</li>
@@ -42,13 +44,15 @@ export default function Homepage({ posts }: InferGetStaticPropsType<typeof getSt
               <li>Научные исследования и разработки в области естественных и технических наук прочие</li>
               <li>Деятельность по предоставлению прочих вспомогательных услуг для бизнеса, не включенная в другие группировки</li>
             </ul>
+            
+           
           </BasicSection>
         </WhiteBackgroundContainer>
         <DarkerBackgroundContainer>
           <Cta />
           <FeaturesGallery />
           {/* <Features /> */}
-          <Testimonials />
+          {/* <Testimonials /> */}
           {/* <ScrollableBlogPosts posts={posts} /> */}
         </DarkerBackgroundContainer>
       </HomepageWrapper>

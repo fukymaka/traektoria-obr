@@ -40,24 +40,39 @@ export default function NewsletterModal({ onClose }: NewsletterModalProps) {
                 <CloseIconContainer>
                   <CloseIcon onClick={onClose} />
                 </CloseIconContainer>
-                {hasSignedUp && <MailSentState />}
-                {!hasSignedUp && (
-                  <>
-                    <Title>Are you ready to enroll to the best newsletter ever?</Title>
-                    <Row>
+                <Title>Оставьте ваши контактные данные, и мы обязательно с вами свяжемся</Title>
+                    <Col>
                       <CustomInput
                         value={email}
                         onChange={(e: React.ChangeEvent<HTMLInputElement>) => setEmail(e.target.value)}
-                        placeholder="Enter your email..."
+                        placeholder="Введите ваше ФИО..."
                         required
                       />
-                      <CustomButton as="button" type="submit" disabled={hasSignedUp}>
-                        Submit
+                      <CustomInput
+                        value={email}
+                        onChange={(e: React.ChangeEvent<HTMLInputElement>) => setEmail(e.target.value)}
+                        placeholder="Введите ваше ФИО..."
+                        required
+                      />
+                      <CustomInput
+                        value={email}
+                        onChange={(e: React.ChangeEvent<HTMLInputElement>) => setEmail(e.target.value)}
+                        placeholder="Введите ваше ФИО..."
+                        required
+                      />
+                      <CustomInput
+                        value={email}
+                        onChange={(e: React.ChangeEvent<HTMLInputElement>) => setEmail(e.target.value)}
+                        placeholder="Введите ваше ФИО..."
+                        required
+                      />
+                    </Col>
+                    <Row>
+                    <CustomButton as="button" type="submit" disabled={hasSignedUp}>
+                        Отправить заявку
                       </CustomButton>
                     </Row>
-                    {message && <ErrorMessage dangerouslySetInnerHTML={{ __html: message as string }} />}
-                  </>
-                )}
+                    
               </Card>
             </Container>
           </Overlay>
@@ -117,6 +132,20 @@ const ErrorMessage = styled.p`
 
 const Row = styled.div`
   display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+  margin-top: 3rem;
+
+  ${media('<=tablet')} {
+    flex-direction: column;
+  }
+`;
+
+const Col = styled.div`
+  display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   height: 100%;
