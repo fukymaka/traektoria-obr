@@ -17,22 +17,26 @@ export interface NewsletterModalProps {
 
 export default function NewsletterModal({ onClose }: NewsletterModalProps) {
   const [email, setEmail] = useState('');
+  const [phone, setPhone] = useState('');
+  const [fio, setFio] = useState('');
+  const [job, setJob] = useState('');
+  const [company, setCompany] = useState('');
 
   useEscClose({ onClose });
 
   function onSubmit(event: React.FormEvent<HTMLFormElement>, enrollNewsletter: (props: DefaultFormFields) => void) {
     event.preventDefault();
     console.log({ email });
-    if (email) {
-      enrollNewsletter({ EMAIL: email });
-    }
+    // if (email) {
+    //   enrollNewsletter({ EMAIL: email });
+    // }
   }
 
   return (
     <MailchimpSubscribe
       url={EnvVars.MAILCHIMP_SUBSCRIBE_URL}
       render={({ subscribe, status, message }) => {
-        const hasSignedUp = status === 'success';
+        // const hasSignedUp = status === 'success';
         return (
           <Overlay>
             <Container>
@@ -43,32 +47,39 @@ export default function NewsletterModal({ onClose }: NewsletterModalProps) {
                 <Title>Оставьте ваши контактные данные, и мы обязательно с вами свяжемся</Title>
                     <Col>
                       <CustomInput
-                        value={email}
-                        onChange={(e: React.ChangeEvent<HTMLInputElement>) => setEmail(e.target.value)}
-                        placeholder="Введите ваше ФИО..."
+                        value={fio}
+                        onChange={(e: React.ChangeEvent<HTMLInputElement>) => setFio(e.target.value)}
+                        placeholder="Ваше ФИО..."
+                        required
+                      />
+                      <CustomInput
+                        value={phone}
+                        type='phone'
+                        onChange={(e: React.ChangeEvent<HTMLInputElement>) => setPhone(e.target.value)}
+                        placeholder="Ваш номер телефона..."
                         required
                       />
                       <CustomInput
                         value={email}
                         onChange={(e: React.ChangeEvent<HTMLInputElement>) => setEmail(e.target.value)}
-                        placeholder="Введите ваше ФИО..."
+                        placeholder="Ваш e-mail..."
                         required
                       />
                       <CustomInput
-                        value={email}
-                        onChange={(e: React.ChangeEvent<HTMLInputElement>) => setEmail(e.target.value)}
-                        placeholder="Введите ваше ФИО..."
+                        value={job}
+                        onChange={(e: React.ChangeEvent<HTMLInputElement>) => setJob(e.target.value)}
+                        placeholder="Ваша должность..."
                         required
                       />
                       <CustomInput
-                        value={email}
-                        onChange={(e: React.ChangeEvent<HTMLInputElement>) => setEmail(e.target.value)}
-                        placeholder="Введите ваше ФИО..."
+                        value={company}
+                        onChange={(e: React.ChangeEvent<HTMLInputElement>) => setCompany(e.target.value)}
+                        placeholder="Ваша организация..."
                         required
                       />
                     </Col>
                     <Row>
-                    <CustomButton as="button" type="submit" disabled={hasSignedUp}>
+                    <CustomButton as="button" type="submit">
                         Отправить заявку
                       </CustomButton>
                     </Row>
@@ -172,6 +183,7 @@ const CustomButton = styled(Button)`
 
 const CustomInput = styled(Input)`
   width: 60%;
+  margin: 10px;
 
   ${media('<=tablet')} {
     width: 100%;
