@@ -6,6 +6,8 @@ import { NavItems } from 'types'
 import ClientOnly from './ClientOnly'
 import CloseIcon from './CloseIcon'
 import OriginalDrawer from './Drawer'
+import Button from './Button';
+import { useNewsletterModalContext } from 'contexts/newsletter-modal.context';
 
 type NavigationDrawerProps = PropsWithChildren<{ items: NavItems }>
 
@@ -46,10 +48,21 @@ function NavItemsList({ items }: NavigationDrawerProps) {
   return (
     <ul>
       {items.map((singleItem, idx) => {
+        
+        const { setIsModalOpened } = useNewsletterModalContext();
+
+  function showNewsletterModal() {
+    setIsModalOpened(true);
+  }
+
+  if (singleItem.outlined) {
+    return <CustomButton onClick={showNewsletterModal}>{singleItem.title}</CustomButton>;
+  }
         return (
           <NavItem key={idx}>
             <NextLink href={singleItem.href}>{singleItem.title}</NextLink>
           </NavItem>
+          
         )
       })}
     </ul>
@@ -62,6 +75,11 @@ function DrawerCloseButton() {
 
   return <CloseIcon className="close-icon" _ref={ref} {...a11yProps} />
 }
+
+const CustomButton = styled(Button)`
+  padding: 0.75rem 1.5rem;
+  line-height: 1.8;
+`;
 
 const Wrapper = styled.div`
   .my-drawer {
