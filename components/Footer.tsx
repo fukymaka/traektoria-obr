@@ -58,23 +58,7 @@ export default function Footer() {
         <BottomBar>
           <ShareBar>
             <img src='/logo_fasie.png'></img>
-            {/* <NextLink href="https://www.twitter.com/my-saas-startup" passHref>
-              <a>
-                <TwitterIcon size={50} round={true} />
-              </a>
-            </NextLink>
-
-            <NextLink href="https://www.facebook.com/my-saas-startup" passHref>
-              <a>
-                <FacebookIcon size={50} round={true} />
-              </a>
-            </NextLink>
-
-            <NextLink href="https://www.linkedin.com/my-saas-startup" passHref>
-              <a>
-                <LinkedinIcon size={50} round={true} />
-              </a>
-            </NextLink> */}
+            
           </ShareBar>
           <Copyright>ООО "Траектория Образования"<br></br>192076, г. Санкт-Петербург, ул. Прибрежная, д.1, лит. А, кв.238<br></br>ОГРН 1147847299907 ИНН 7840511846 КПП 781101001</Copyright>
         </BottomBar>

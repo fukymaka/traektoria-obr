@@ -56,12 +56,15 @@ function NavItemsList({ items }: NavigationDrawerProps) {
   }
 
   if (singleItem.outlined) {
-    return <CustomButton onClick={showNewsletterModal}>{singleItem.title}</CustomButton>;
+    return <CustomButton key={"letterModal"} onClick={showNewsletterModal}>{singleItem.title}</CustomButton>;
   }
         return (
-          <NavItem key={idx}>
-            <NextLink href={singleItem.href}>{singleItem.title}</NextLink>
-          </NavItem>
+         
+          <NavItem onClick={close} key={idx || singleItem.href}>
+          <NextLink  href={singleItem.href}>
+              {singleItem.title}
+          </NextLink>
+        </NavItem>
           
         )
       })}
