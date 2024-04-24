@@ -47,7 +47,7 @@ export default function NewsletterModal({ onClose }: NewsletterModalProps) {
                 {hasSignedUp && <MailSentState />}
                 {!hasSignedUp && (
                   <>
-                <Title>Оставьте ваши контактные данные, и мы обязательно с вами свяжемся</Title>
+                <Title>Оставьте ваши контактные данные,<br/>и мы обязательно с вами свяжемся</Title>
                     <Col>
                       <CustomInput
                         value={fio}
