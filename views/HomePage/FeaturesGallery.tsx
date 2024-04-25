@@ -13,7 +13,7 @@ const TABS = [
     title: '3D платформа для обучения и создания интерактивных курсов',
     description:
       '<p>Образовательная 3D платформа упрощает подготовку к занятиям и повышает интерес учащихся. Пользователи могут создавать и использовать интерактивные курсы, 3D-презентации, проверочные задания и тесты.</p>',
-    imageUrl: '/demo-illustration-3.png',
+    imageUrl: '/3d_platform-illustration-2.png',
     baseColor: '249,82,120',
     secondColor: '221,9,57',
   },
@@ -21,7 +21,7 @@ const TABS = [
     title: 'Сеть электронных университетов',
     description:
       '<p>Образовательная платформа, обеспечивающая доступность образования через электронное обучение и дистанционные технологии, поддержку индивидуальных образовательных траекторий и поиск молодых талантов.</p>',
-    imageUrl: '/demo-illustration-4.png',
+    imageUrl: '/seu-illustration.png',
     baseColor: '57,148,224',
     secondColor: '99,172,232',
   },
@@ -29,7 +29,7 @@ const TABS = [
     title: 'Волонтерский токен',
     description:
       '<p>Мобильное приложение, работающее с применением систем распределенного реестра для реализации модели социального управления волонтерством и его развитием в регионах России.</p>',
-    imageUrl: '/demo-illustration-5.png',
+    imageUrl: '/token-illustration.png',
     baseColor: '88,193,132',
     secondColor: '124,207,158',
   },
@@ -44,7 +44,7 @@ export default function FeaturesGallery() {
 
     return (
       <ImageContainer key={singleTab.title} isActive={isActive}>
-        <NextImage src={singleTab.imageUrl} alt={singleTab.title} layout="fill" objectFit="contain" priority={isFirst} />
+        <NextImage src={singleTab.imageUrl} alt={singleTab.title} layout="fill" objectFit="cover" priority={isFirst} />
       </ImageContainer>
     );
   });
@@ -77,7 +77,7 @@ export default function FeaturesGallery() {
     <FeaturesGalleryWrapper>
       <Content>
         <OverTitle>Решения</OverTitle>
-        <SectionTitle>Примеры реализованных проектов</SectionTitle>
+        <SectionTitle>Реализованные проекты</SectionTitle>
       </Content>
       <GalleryWrapper>
         <TabsContainer>{tabsMarkup}</TabsContainer>
