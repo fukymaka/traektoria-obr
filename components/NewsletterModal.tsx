@@ -1,5 +1,5 @@
+
 import React, { useState } from 'react';
-import MailchimpSubscribe, { DefaultFormFields } from 'react-mailchimp-subscribe';
 import styled from 'styled-components';
 import { EnvVars } from 'env';
 import useEscClose from 'hooks/useEscKey';
@@ -10,9 +10,16 @@ import Container from './Container';
 import Input from './Input';
 import MailSentState from './MailSentState';
 import Overlay from './Overlay';
+import emailjs, { EmailJSResponseStatus } from 'emailjs-com';
 
 export interface NewsletterModalProps {
   onClose: () => void;
+}
+
+interface FormData {
+  from_name: string;
+  to_name: string;
+  message: string;
 }
 
 export default function NewsletterModal({ onClose }: NewsletterModalProps) {
@@ -24,78 +31,78 @@ export default function NewsletterModal({ onClose }: NewsletterModalProps) {
 
   useEscClose({ onClose });
 
-  function onSubmit(event: React.FormEvent<HTMLFormElement>, enrollNewsletter: (props: DefaultFormFields) => void) {
+
+  function sendEmail(form: HTMLFormElement): void {
+    emailjs.sendForm('service_gmrv9oi', 'template_tmuhhl6', form, '8CcJRmI0sHjep22Uw')
+      .then((response: EmailJSResponseStatus) => {
+        console.log('Email sent:', response.status, response.text);
+      })
+      .catch((error: Error) => {
+        console.error('Email error:', error);
+      });
+  }
+
+  function onSubmit(event: React.FormEvent<HTMLFormElement>): void {
     event.preventDefault();
-    console.log({ email });
-    if (email) {
-      enrollNewsletter({ EMAIL: email });
-    }
+    const formData: FormData = {
+      from_name: 'User',
+      to_name: 'Your Email',
+      message: `Email: ${email}, Phone: ${phone}, FIO: ${fio}, Job: ${job}, Company: ${company}`
+    };
+    sendEmail(event.currentTarget);
   }
 
   return (
-    <MailchimpSubscribe
-      url={EnvVars.MAILCHIMP_SUBSCRIBE_URL}
-      render={({ subscribe, status, message }) => {
-        const hasSignedUp = status === 'success';
-        return (
-          <Overlay>
-            <Container>
-              <Card onSubmit={(event: React.FormEvent<HTMLFormElement>) => onSubmit(event, subscribe)}>
-                <CloseIconContainer>
-                  <CloseIcon onClick={onClose} />
-                </CloseIconContainer>
-                {hasSignedUp && <MailSentState />}
-                {!hasSignedUp && (
-                  <>
-                <Title>Оставьте ваши контактные данные,<br/>и мы обязательно с вами свяжемся</Title>
-                    <Col>
-                      <CustomInput
-                        value={fio}
-                        onChange={(e: React.ChangeEvent<HTMLInputElement>) => setFio(e.target.value)}
-                        placeholder="Ваше ФИО..."
-                        required
-                      />
-                      <CustomInput
-                        value={phone}
-                        type='phone'
-                        onChange={(e: React.ChangeEvent<HTMLInputElement>) => setPhone(e.target.value)}
-                        placeholder="Ваш номер телефона..."
-                        required
-                      />
-                      <CustomInput
-                        value={email}
-                        onChange={(e: React.ChangeEvent<HTMLInputElement>) => setEmail(e.target.value)}
-                        placeholder="Ваш e-mail..."
-                        required
-                      />
-                      <CustomInput
-                        value={job}
-                        onChange={(e: React.ChangeEvent<HTMLInputElement>) => setJob(e.target.value)}
-                        placeholder="Ваша должность..."
-                        required
-                      />
-                      <CustomInput
-                        value={company}
-                        onChange={(e: React.ChangeEvent<HTMLInputElement>) => setCompany(e.target.value)}
-                        placeholder="Ваша организация..."
-                        required
-                      />
-                    </Col>
-                    <Row>
-                    <CustomButton as="button" type="submit">
-                        Отправить заявку
-                      </CustomButton>
-                    </Row>
-                    {message && <ErrorMessage dangerouslySetInnerHTML={{ __html: message as string }} />}
-                  </>
-                )}
-                    
-              </Card>
-            </Container>
-          </Overlay>
-        );
-      }}
-    />
+    <Overlay>
+      <Container>
+        <Card onSubmit={onSubmit}>
+          <CloseIconContainer>
+            <CloseIcon onClick={onClose} />
+          </CloseIconContainer>
+          {/* Ваш код для отображения состояния успешной отправки формы */}
+          <Title>Оставьте ваши контактные данные,<br/>и мы обязательно с вами свяжемся</Title>
+          <Col>
+            <CustomInput
+              value={fio}
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) => setFio(e.target.value)}
+              placeholder="Ваше ФИО..."
+              required
+            />
+            <CustomInput
+              value={phone}
+              type="phone"
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) => setPhone(e.target.value)}
+              placeholder="Ваш номер телефона..."
+              required
+            />
+            <CustomInput
+              value={email}
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) => setEmail(e.target.value)}
+              placeholder="Ваш e-mail..."
+              required
+            />
+            <CustomInput
+              value={job}
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) => setJob(e.target.value)}
+              placeholder="Ваша должность..."
+              required
+            />
+            <CustomInput
+              value={company}
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) => setCompany(e.target.value)}
+              placeholder="Ваша организация..."
+              required
+            />
+          </Col>
+          <Row>
+            <CustomButton as="button" type="submit">
+              Отправить заявку
+            </CustomButton>
+          </Row>
+          {/* Ваш код для отображения ошибки */}
+        </Card>
+      </Container>
+    </Overlay>
   );
 }
 
